@@ -402,10 +402,10 @@ export default function CoursePlayerPage() {
   }
 
   return (
-    <div className="flex h-screen bg-[#0C0C0C] overflow-hidden flex-col lg:flex-row">
+    <div className="fixed inset-0 z-50 flex bg-[#0C0C0C] overflow-hidden flex-col md:flex-row">
       {/* Cinematic Main Area */}
-      <div className="flex-1 flex flex-col min-w-0 order-1 lg:order-none">
-        <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col min-w-0 min-h-0 order-1 md:order-none">
+        <div className="flex-1 flex flex-col min-h-0">
           {/* Top Bar */}
           <div className="px-4 md:px-8 py-4 md:py-6 flex items-center justify-between border-b border-white/5 bg-black/40 backdrop-blur-md">
             <div className="flex items-center gap-3 md:gap-4 min-w-0">
@@ -446,7 +446,7 @@ export default function CoursePlayerPage() {
           </div>
 
           {/* Immersive Player Content */}
-          <div className="flex-1 relative flex items-center justify-center bg-black">
+          <div className="flex-1 relative flex items-center justify-center bg-black min-h-0">
              {activeLessonId === "overview" ? (
                 <div className="w-full h-full bg-[#0C0C0C] flex items-center justify-center p-10 overflow-auto">
                    <div className="max-w-3xl w-full border-white/5 bg-white/[0.01] p-16 rounded-[3rem] border shadow-2xl space-y-12 animate-in fade-in slide-in-from-bottom-6 duration-700">
@@ -552,7 +552,7 @@ export default function CoursePlayerPage() {
                    variant="ghost"
                    onClick={() => setShowCurriculum(v => !v)}
                    className={cn(
-                     "lg:hidden gap-2 font-bold text-[12px] md:text-[13px] h-9 md:h-10 px-3 md:px-4 rounded-xl transition-all whitespace-nowrap",
+                     "md:hidden gap-2 font-bold text-[12px] md:text-[13px] h-9 md:h-10 px-3 md:px-4 rounded-xl transition-all whitespace-nowrap",
                      showCurriculum ? "bg-primary text-white" : "text-white/60 hover:text-white"
                    )}
                 >
@@ -828,15 +828,15 @@ export default function CoursePlayerPage() {
 
       {/* Curriculum Sidebar */}
       <aside className={cn(
-        "fixed inset-y-0 right-0 z-40 lg:relative lg:translate-x-0 w-[320px] md:w-[380px] border-l border-white/5 flex flex-col bg-[#0F0F0F] shrink-0 transition-transform duration-300 ease-in-out",
-        showCurriculum ? "translate-x-0 shadow-2xl" : "translate-x-full lg:translate-x-0"
+        "fixed inset-y-0 right-0 z-40 md:relative md:translate-x-0 w-[320px] md:w-[380px] border-l border-white/5 flex flex-col bg-[#0F0F0F] shrink-0 transition-transform duration-300 ease-in-out",
+        showCurriculum ? "translate-x-0 shadow-2xl" : "translate-x-full md:translate-x-0"
       )}>
           <div className="p-6 md:p-8 border-b border-white/5 space-y-4 md:space-y-6">
              <div className="flex items-center justify-between">
                 <h2 className="text-[10px] md:text-[11px] font-bold text-white/40 uppercase tracking-[0.3em]">Course Curriculum</h2>
                 <div className="flex items-center gap-2">
                   <Button variant="ghost" className={cn("h-7 px-3 rounded-lg text-[10px] font-black tracking-widest uppercase", activeLessonId === "overview" ? "bg-primary/20 text-primary" : "text-white/40 hover:text-white")} onClick={() => { setActiveLessonId("overview"); setShowCurriculum(false); }}>Overview</Button>
-                  <Button variant="ghost" size="icon" className="lg:hidden h-7 w-7 text-white/40" onClick={() => setShowCurriculum(false)}>
+                  <Button variant="ghost" size="icon" className="md:hidden h-7 w-7 text-white/40" onClick={() => setShowCurriculum(false)}>
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
